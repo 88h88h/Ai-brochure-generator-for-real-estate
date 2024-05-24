@@ -69,13 +69,13 @@ export const generateCopy = async (req, res) => {
 };
 
 export const insertCopy = async (req, res) => {
-  const { tone, length, features, positioning, output } = req.body;
+  const { tone, length, features, brandPositioning, output } = req.body;
 
   const newCopy = new Output({
     tone,
     length,
     features,
-    positioning,
+    brandPositioning,
     output,
   });
 
@@ -83,7 +83,9 @@ export const insertCopy = async (req, res) => {
     await newCopy.save();
     res.json({ message: "Data inserted successfully" });
   } catch (error) {
-    res.status(500).json({ error: "Error inserting data" });
+    res
+      .status(500)
+      .json({ error: "Error inserting data", errormessage: error });
   }
 };
 
