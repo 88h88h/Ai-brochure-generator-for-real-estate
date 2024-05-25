@@ -42,21 +42,18 @@ const Home = () => {
     setError("");
     setInsertSuccess("");
     try {
-      const response = await fetch(
-        "https://backend-ai-brochure-generator-for-real.onrender.com/api/generate",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            tone: inputs.tone,
-            length: inputs.length,
-            features: inputs.features,
-            positioning: inputs.brandPositioning,
-          }),
-        }
-      );
+      const response = await fetch("http://localhost:5000/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          tone: inputs.tone,
+          length: inputs.length,
+          features: inputs.features,
+          positioning: inputs.brandPositioning,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error("Error generating copy");
@@ -86,20 +83,17 @@ const Home = () => {
     setRegenerateError("");
     setInsertSuccess(""); // Reset success message on regenerate
     try {
-      const response = await fetch(
-        "https://backend-ai-brochure-generator-for-real.onrender.com/api/regenerate",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            completeText: output,
-            selectedText: selection,
-            option: option,
-          }),
-        }
-      );
+      const response = await fetch("http://localhost:5000/api/regenerate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          completeText: output,
+          selectedText: selection,
+          option: option,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error("Error regenerating copy");
@@ -119,22 +113,19 @@ const Home = () => {
     setInsertError("");
     setInsertSuccess("");
     try {
-      const response = await fetch(
-        "https://backend-ai-brochure-generator-for-real.onrender.com/api/insert",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            tone: inputs.tone,
-            length: inputs.length,
-            features: inputs.features,
-            brandPositioning: inputs.brandPositioning,
-            output: output,
-          }),
-        }
-      );
+      const response = await fetch("http://localhost:5000/api/insert", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          tone: inputs.tone,
+          length: inputs.length,
+          features: inputs.features,
+          brandPositioning: inputs.brandPositioning,
+          output: output,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error("Error inserting copy");
