@@ -21,7 +21,7 @@ Generate a narrative flow for the real estate brochure keeping in mind the brand
 </FEATURES>
 
 Keep the tone of the narrative *$(...pass Input C: Tone)*
-Also make sure that the length of the copy is *$(...pass Input D: Length passed as number of sentences to generate)*
+Also make sure that the length (in sentences) of the copy is *$(...pass Input D: Length passed as number of sentences to generate)*
 `;
 
 const REFERENCE_PROMPT_REGENERATE = `
@@ -43,7 +43,7 @@ Generate and return the complete text containing the modification, without provi
 
 export const generateCopy = async (req, res) => {
   const { tone, length, features, positioning } = req.body;
-  const lengthMap = { Short: 5, Medium: 9, Long: 18 };
+  const lengthMap = { Short: 10, Medium: 20, Long: 30 };
   const lengthSentences = lengthMap[length];
 
   const prompt = REFERENCE_PROMPT.replace(
