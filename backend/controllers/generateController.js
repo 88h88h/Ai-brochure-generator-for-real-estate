@@ -4,8 +4,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const model = new ChatAnthropic({
-  model: "claude-3-sonnet-20240229", // Replace with your desired Anthropic model
-  apiKey: process.env.ANTHROPIC_API_KEY, // Set your Anthropic API key as an environment variable
+  model: "claude-3-sonnet-20240229",
+  apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
 const REFERENCE_PROMPT = `
